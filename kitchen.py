@@ -20,9 +20,15 @@ class Quantity:
 
 class Converter:
     def reduce(self, expression, unit):
-        return expression
+        return expression.reduce(unit)
 
 class Sum:
     def __init__(self, left, right):
         self.left = left
         self.right = right
+
+    def reduce(self, unit):
+        return Quantity(
+            self.left.amount + self.right.amount,
+            unit
+        )
